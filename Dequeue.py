@@ -11,6 +11,7 @@ class Deque:
     def deleteFromFirst(self):
         if(self.isEmpty()):
             print("Queue is empty")
+            return
         else:
             return self.items.pop(0)
         
@@ -20,6 +21,7 @@ class Deque:
     def deleteAtEnd(self):
         if(self.isEmpty()):
             print("Queue is empty")
+            return
         return self.items.pop()
 
 
@@ -35,4 +37,6 @@ print(dq.deleteAtEnd())
 print(dq.deleteFromFirst())
 print(dq.deleteFromFirst())
 print(dq.deleteAtEnd())
-print(dq.deleteAtEnd())
+
+dq.deleteAtEnd()
+dq.deleteFromFirst()
