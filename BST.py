@@ -17,7 +17,34 @@ def insert( root, value):
     else:
         root.right = insert(root.right, value)
 
-    return root 
+    return root
+
+def get_successor(root):
+    root = root.right
+    while root is not None and root.left is not None:
+        root = root.left
+    return root
+
+def delete(root, value):
+    if root is None:
+        return root 
+    
+    if root.data > value:
+        root.left = delete(root.left, value)
+    elif root.data < value:
+        root.right = delete(root.right, value)
+
+    else:
+        if root.left is None:
+            return root.right
+        elif root.right is None:
+            return root.left
+        else:
+            successor = get_successor(root)
+            root.data = successor.data
+            root.right = delete(root.right, successor.data)
+
+    return root
 
 def search(root, value):
     if root is None:
@@ -59,5 +86,6 @@ root = insert(root, 25)
 root = insert(root, 50)
 inOrder(root)
 
-search(root, 25)
-search(root, 100)
+delete(root, 30)
+print("/n")
+inOrder(root)
